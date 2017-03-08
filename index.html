@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资计算器</title>
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<link rel="stylesheet" type="text/css" href="./css/slarycal.css">
+	<script type="text/javascript" src="./js/cityConfig.js"></script>
+<script type="text/javascript" src="./js/vue.js"></script>
+<script src='//a.58cdn.com.cn/app58/js/app.js?cachevers=132' type='text/javascript'></script>
+</head>
+<body>
+<!-- 模板中的my-flag不可更改，这是提交校验的标识，更改后无法建立对应关系 -->
+<div id="articleWrap">
+	<tab-element v-on:changetab="changeTabEvent"></tab-element>
+	<ul class="article">
+	     <city-element my-text="当前城市" :my-city="citySelect" v-on:confgcity='changeConfgCity'>
+	     </city-element>
+
+         <input-element my-text="税前月薪" my-flag="salary" v-on:number="getNumber">
+         </input-element>
+         <template v-if="salaryShow">
+         <show-more-element @click="showMore"></show-more-element>
+         <ul class="more_wrap" v-show="isShowMore">
+         <ratio-element my-text="个人公积金系数" :my-ratio="personalHosingCoef" my-flag="percoef" v-on:number="getNumber">
+         </ratio-element>
+
+         <ratio-element my-text="公司公积金系数" :my-ratio="companyHosingCoef" my-flag="comcoef" v-on:number="getNumber">
+         </ratio-element>
+
+         <input-element my-text="公积金基数" my-flag="house" v-on:number="getNumber">
+         </input-element>
+
+         <input-element my-text="社保基数" my-flag="social" v-on:number="getNumber" > 
+         </input-element>
+         </ul>
+         </template>
+         <template v-else>
+         	 <input-element my-text="税前年终奖" my-flag="yearend" v-on:number="getNumber">
+             </input-element>
+         </template>
+
+	</ul>
+	<ratio-select></ratio-select>
+</div>
+<div class="footWrap" id="footWrap">
+	<div class="startCompute" @click="submit">开始计算</div>
+	<p class="tips" v-show="tipShow">{{tipMessage}}</p>
+</div>
+</div>
+<script type="text/javascript" src="./js/salary_vue.js"></script>
+</body>
+</html>

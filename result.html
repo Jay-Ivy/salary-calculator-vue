@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<link rel="stylesheet" type="text/css" href="./css/slarycal.css">
+   <script type="text/javascript" src="./js/cityConfig.js"></script>
+<script type="text/javascript" src="./js/vue.js"></script>
+<script src='//a.58cdn.com.cn/app58/js/app.js?cachevers=132' type='text/javascript'></script>
+</head>
+<body id="result" :class="classObject">
+<template v-if="tabindex">
+   <div class="preview_salary">
+   	 <preview-element :my-preview="previewList" :my-salary="finalSalary"></preview-element>
+   </div>
+   <div class="diagram_salary">
+   	 <diagram-element :my-diagram="diagramList"></diagram-element>
+   </div>
+   <div class="detail_salary">
+   	 <detail-element :my-detail="detailList"></detail-element>
+   </div>
+   <div class="info_salary">
+       <info-wrap-element></info-wrap-element>
+   </div>
+</template>
+<template v-else>
+<div class="preview_yearend">
+	 <yearend-preview-element :my-preview="yearEndPreviewList"></yearend-preview-element>
+</div>
+<div class="diagram_yearend">
+   	 <diagram-element :my-diagram="diagramListYearEnd"></diagram-element>
+   </div>	
+</template>
+
+<script type="text/javascript" src="./js/result_vue.js"></script>	
+</body>
+</html>
