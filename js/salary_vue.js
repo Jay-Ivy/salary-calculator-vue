@@ -188,7 +188,7 @@ var vm_foot=new Vue({
      	 	for( key in __data){
               __arg.push(key+"="+encodeURI(__data[key]))
      	 	}
-     	 	window.location="/result.html?"+__arg.join("&");
+     	 	window.location="result.html?"+__arg.join("&");
      	 }
      	 
      }
